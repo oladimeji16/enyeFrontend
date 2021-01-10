@@ -7,10 +7,10 @@ import Profiles from "./components/profiles/Profiles";
 import Pagination from "./components/Pagination/Pagination";
 
 function App() {
-  const [profiles, setProfiles] = useState([]);
+  const [userProfiles, setUserProfiles] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [profilesPerPage] = useState(20);
+  const [profilesPerPage] = useState(10);
 
   // useEffect to search for my data
   useEffect(() => {
@@ -18,20 +18,19 @@ function App() {
     const fetchProfiles = async () => {
       setLoading(true);
       const res = await axios.get("http://api.enye.tech/v1/challenge/records");
-      setProfiles(res.data);
+      setUserProfiles(res.data.records.profiles);
       setLoading(false);
     };
 
     fetchProfiles();
   }, []);
 
-  console.log(profiles);
+  console.log(userProfiles);
 
   const indexOfLastProfile = currentPage * profilesPerPage;
   const indexOfFirstProfile = indexOfLastProfile * profilesPerPage;
-  const currentProfile = profiles.slice(
-    indexOfFirstProfile,
-    indexOfLastProfile
+  const currentProfile = userProfiles.slice(
+    indexOfLastProfile,indexOfFirstProfile
   );
 
   //changePage
@@ -43,7 +42,7 @@ function App() {
         <Pagination
           paginate={paginate}
           profilesPerPage={profilesPerPage}
-          totalProfiles={profiles.length}
+          totalProfiles={userProfiles.length}
         />
       </div>
     </div>
