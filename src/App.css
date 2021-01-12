@@ -15,6 +15,7 @@ body {
     padding: 20px;
     align-items: center;
     background: #fafafa;
+    text-align: center;
   }
 
   .app__search {

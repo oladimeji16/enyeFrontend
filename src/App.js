@@ -48,6 +48,7 @@ function App() {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
   return (
     <div className="App">
+      <h1>Enye Frontend Challenge</h1>
       <div className="app__search">
         <input className='app__searchbox'
 
