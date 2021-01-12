@@ -50,22 +50,26 @@ function App() {
     <div className="App">
       <h1>Enye Frontend Challenge</h1>
       <div className="app__search">
-        <input className='app__searchbox'
-
+        <input
+          className="app__searchbox"
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder='Search...'
+          placeholder="Search..."
         />
       </div>
-      <div>
-        <Profiles loading={loading} profiles={search(currentProfile)} />
-        <Pagination
-          paginate={paginate}
-          profilesPerPage={profilesPerPage}
-          totalProfiles={userProfiles.length}
-        />
-      </div>
+      {loading ? (
+        <p className="profiles__loading">Loading...</p>
+      ) : (
+        <div>
+          <Profiles profiles={search(currentProfile)} />
+          <Pagination
+            paginate={paginate}
+            profilesPerPage={profilesPerPage}
+            totalProfiles={userProfiles.length}
+          />
+        </div>
+      )}
     </div>
   );
 }

@@ -2,10 +2,7 @@ import React from "react";
 
 import "./Profiles.css";
 
-const Profiles = ({ profiles, loading, }) => {
-  if (loading) {
-    return <p className='profiles__loading'>Loading...</p>;
-  }
+const Profiles = ({ profiles }) => {
   return (
     <div className="profiles">
       {profiles.map((profile) => (
