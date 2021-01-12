@@ -11,7 +11,7 @@ const Pagination = ({ profilesPerPage, totalProfiles, paginate }) => {
     <nav className="pagination">
       {/* <p className='pagination__totalPages'>{pageNumber.toString()}</p> */}
       {pageNumber.map((no) => (
-        <button onClick={() => paginate(no)} className="pagination__link">
+        <button key={no} onClick={() => paginate(no)} className="pagination__link">
           {no}
         </button>
       ))}

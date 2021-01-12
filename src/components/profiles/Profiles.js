@@ -9,7 +9,7 @@ const Profiles = ({ profiles, loading, }) => {
   return (
     <div className="profiles">
       {profiles.map((profile) => (
-        <div className="profiles__card">
+        <div className="profiles__card" key={profile.CreditCardNumber}>
           <div className="profiles__personalInfo">
             <h2 className="profiles__title">PERSONAL INFORMATION</h2>
             <p className="profiles__personal">
