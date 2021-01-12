@@ -6,6 +6,7 @@
   justify-content: space-evenly;
   font-size: 16px;
   text-align: start;
+  overflow: 0;
 }
 
 .profiles__loading{
@@ -34,6 +35,7 @@
   letter-spacing: 2px;
   background-color: #333;
   background-image: linear-gradient(315deg, #333 0%, #414141 74%);
+  overflow: auto;
 }
 
 .profiles__card:hover {
