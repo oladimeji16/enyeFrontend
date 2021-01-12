@@ -5,6 +5,7 @@
   gap: 40px;
   justify-content: space-evenly;
   font-size: 16px;
+  text-align: start;
 }
 
 .profiles__loading{
