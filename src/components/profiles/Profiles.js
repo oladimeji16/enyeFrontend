@@ -1,14 +1,10 @@
 import React from "react";
 
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import Typography from "@material-ui/core/Typography";
-
 import "./Profiles.css";
 
-const Profiles = ({ profiles, loading }) => {
+const Profiles = ({ profiles, loading, }) => {
   if (loading) {
-    return <h1>Loading...</h1>;
+    return <p className='profiles__loading'>Loading...</p>;
   }
   return (
     <div className="profiles">

@@ -10,7 +10,8 @@ function App() {
   const [userProfiles, setUserProfiles] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [profilesPerPage] = useState(10);
+  const [profilesPerPage] = useState(20);
+  const [query, setQuery] = useState("");
 
   // useEffect to search for my data
   useEffect(() => {
@@ -27,18 +28,37 @@ function App() {
 
   console.log(userProfiles);
 
-  const indexOfLastProfile = currentPage * profilesPerPage;
-  const indexOfFirstProfile = indexOfLastProfile * profilesPerPage;
+  // Search profiles using Lastname
+  function search(profiles) {
+    return profiles.filter(
+      (profile) =>
+        profile.Gender.toLowerCase().indexOf(query) > -1 ||
+        profile.PaymentMethod.toLowerCase().indexOf(query) > -1 ||
+        profile.CreditCardType.toLowerCase().indexOf(query) > -1
+    );
+  }
+
+  const indexOfFirstProfile = (currentPage -1) * profilesPerPage;
   const currentProfile = userProfiles.slice(
-    indexOfLastProfile,indexOfFirstProfile
+    indexOfFirstProfile,
+    indexOfFirstProfile + profilesPerPage
   );
 
   //changePage
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
   return (
     <div className="App">
-      <div className="app__main">
-        <Profiles loading={loading} profiles={currentProfile} />
+      <div className="app__search">
+        <input className='app__searchbox'
+
+          type="text"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder='Search...'
+        />
+      </div>
+      <div>
+        <Profiles loading={loading} profiles={search(currentProfile)} />
         <Pagination
           paginate={paginate}
           profilesPerPage={profilesPerPage}
